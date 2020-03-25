@@ -1,11 +1,11 @@
 # Site settings
-author: Curtis Chadwell
-title: 
+author: Curtis Laurence Chadwell
+title: The Evolution Of A Bartender
 header-img: img/home-bg.png
 email: laurencechadwell@gmail.com
-copyright_name: Curtis Chadwell
+copyright_name: Curtis Laurence Chadwell
 description: > # this means to ignore newlines until "baseurl:"
-  
+  Watch me grow
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  curchadw
