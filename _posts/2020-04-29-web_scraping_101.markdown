@@ -1,0 +1,120 @@
+---
+layout: post
+title:      "Web Scraping 101"
+date:       2020-04-29 23:06:20 +0000
+permalink:  web_scraping_101
+---
+
+
+Web scraping is a bit intense unless you already hava grasp for html and css. But first, what is web scrpaing and what is it useful for? Imagine if your boss needs you to write up a little application of realtors in San Antonio ,Texas for example, and you just need to get their names. You will need to do what we call web scraping. Now here is the thing about web scraping... it not nesscarily advisible in some cases as grabbing an api would be better, also website change all the time to where the web scraping you did is pretty useless at some point
+
+So what does the process look if I were tor scrape one page from the Texas Real Estate Comission website for so realtors?
+
+First thing you have to do is include the Pry gem to help you test how the code is going to display. You will also include the Nokogiri gem that pulls nest nodes. last but not least the OpenURI gem is used to help you retrieve a website(typically most protocols)
+
+```
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
+
+
+class Scraper
+
+end
+```
+
+The next thing to do is find the website you want to scrape(for privacy purposes I will be changing name and not show phone numbers of these realtors). Once you find the website, you will need to set it to a variable.
+
+
+```
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
+
+
+class Scraper
+   
+	 #this is where the open-uri gem kicks in
+	 
+	 html = open("https://www.trec.texas.gov/apps/license-holder-search/?lic_name=&industry=Real+Estate&email=&city=san+Antonio&county=&zip=&display_status=&lic_hp=&ws=786&license_search=Search")
+	 
+	 
+end
+```
+
+
+After you assign the website to a variable you will use Nokogiri::HTML to return a bunch of nested nodes returned from the open-uri gem.
+
+```
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
+
+
+class Scraper
+   
+	 #this is where the open-uri gem kicks in
+	 
+	 html = open("https://www.trec.texas.gov/apps/license-holder-search/?lic_name=&industry=Real+Estate&email=&city=san+Antonio&county=&zip=&display_status=&lic_hp=&ws=786&license_search=Search")
+	 
+	 doc = Nokogiri::HTML(html)
+	 
+	 
+end
+```
+
+This is wehre the tough part comes in play. Scraping is not the easiest thing in the world due to the amount of percision involved in looking for the right elements. I recommend using repl.it to test this. When you run the file you will get something simliar to this
+
+```
+=>#<Nokogiri::HTML::Document:0x2b008ec1cff0 name="document" children=[#<Nokogiri::XML::DTD:0x2b008ec1cd98 name="html">, #<Nokogiri::XML::Element:0x2b008ec1cab4 name="html" attributes=[#<Nokogiri::XML::Attr:0x2b008ec1ca50 name="lang" value="en">] children=[#<Nokogiri::XML::Text:0x2b008ec1c62c "\n">, #<Nokogiri::XML::Element:0x2b008ec1c564 name="head" children=[#<Nokogiri::XML::Text:0x2b008ec1c3ac "\n    ">, #<Nokogiri::XML::Element:0x2b008ec1c2f8 name="meta" attributes=[#<Nokogiri::XML::Attr:0x2b008ec1c294 name="charset" value="utf-8">]>, #<Nokogiri::XML::Text:0x2b008e9dd53c "\n    ">, #<Nokogiri::XML::Element:0x2b008e9dd30c name="meta" attributes=[#<Nokogiri::XML::Attr:0x2b008e9dd21c name="http-equiv" value="X-UA-Compatible">, #<Nokogiri::XML::Attr:0x2b008e9dd1e0 name="content" value="IE=edge">]>, #<Nokogiri::XML::Text:0x2b008e9dc36c "\n    ">, #<Nokogiri::XML::Element:0x2b008e9dc128 name="meta" attributes=[#<Nokogiri::XML::Attr:0x2b008ec33fd4 name="name" value="viewport">, #<Nokogiri::XML::Attr:0x2b008ec33fc0 name="content" value="width=device-width, initial-scale=1.0, maximum-scale=1">]>, #<Nokogiri::XML::Text:0x2b008ec33994 "\n    ">, #<Nokogiri::XML::Element:0x2b008ec338e0 name="meta" attributes=[#<Nokogiri::XML::Attr:0x2b008ec3387c name="name" value="description">, #<Nokogiri::XML::Attr:0x2b008ec33868 name="content">]>, #<Nokogiri::XML::Text:0x2b008ec332b4 "\n    ">, #<Nokogiri::XML::Element:0x2b008ec33200 name="meta" attributes=[#<Nokogiri::XML::Attr:0x2b008ec3319c name="name" value="author">, #<Nokogiri::XML::Attr:0x2b008ec33188 name="content">]>, #<Nokogiri::XML::Text:0x2b008ec32bd4 "\n    ">, #<Nokogiri::XML::Element:0x2b008ec32b20 name="link" attributes=[#<Nokogiri::XML::Attr:0x2b008ec32abc name="rel" value="shortcut icon">, #<Nokogiri::XML::Attr:0x2b008ec32aa8 name="href" value="/favicon.ico">]>, #<Nokogiri::XML::Text:0x2b008ec3247c "\n    ">, #<Nokogiri::XML::Element:0x2b008ec323c8 name="title" children=[#<Nokogiri::XML::Text:0x2b008ec32210 "License Holder Search">]>, #<Nokogiri::XML::Text:0x2b008ec3206c "\n    ">, #<Nokogiri::XML::Element:0x2b008e9cff2c name="link" attributes=[#<Nokogiri::XML::Attr:0x2b008e9cfe64 name="href" value="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Roboto+Slab:400,700|Montserrat">, #<Nokogiri::XML::Attr:0x2b008e9cfe3c name="rel" value="stylesheet">, #<Nokogiri::XML::Attr:0x2b008e9cfe00 name="type" value="text/css">]>, #<Nokogiri::XML::Text:0x2b008e9ce5b4 "\n    ">, #<Nokogiri::XML::Element:0x2b008e9ce190 name="link" attributes=[#<Nokogiri::XML::Attr:0x2b008e9ce014 name="href" value="/assets/trec/css/bootstrap.min.css">, #<Nokogiri::XML::Attr:0x2b008ec37fd0 name="rel" value="stylesheet">]>, #<Nokogiri::XML::Element:0x2b008ec379a4 name="link" attributes=[#<Nokogiri::XML::Attr:0x2b008ec37940 name="href" value="/assets/trec/css/style.css">, #<Nokogiri::XML::Attr:0x2b008ec3792c name="rel" value="stylesheet">]>, #<Nokogiri::XML::Element:0x2b008ec37300 name="link" attributes=[#<Nokogiri::XML::Attr:0x2b008ec3729c name="href" value="./css/license-holder-search.css?t=902430421">, #<Nokogiri::XML::Attr:0x2b008ec37288 name="rel" value="stylesheet">]>, #<Nokogiri::XML::Text:0x2b008ec36c5c "    ">, #<Nokogiri::XML::Element:0x2b008ec36ba8 name="script" attributes=[#<Nokogiri::XML::Attr:0x2b008ec36b44 name="src" value="/apps/inc/vendor/modernizr.custom.js">]>, #<Nokogiri::XML::Text:0x2b008ec36720 "\n    ">, #<Nokogiri::XML::Element:0x2b008ec3666c name="script" attributes=[#<Nokogiri::XML::Attr:0x2b008ec36608 name="src" value="/apps/inc/vendor/respond.min.js">]>, #<Nokogiri::XML::Text:0x2b008ec361e4 "\n    ">, #<Nokogiri::XML::Comment:0x2b008ec36130 "[if lt IE 9]>\n    <script src=\"/apps/inc/vendor/html5shiv.js\"></script>\n    <![endif]">, #<Nokogiri::XML::Text:0x2b008ec3607c "\n        ">, #<Nokogiri::XML::Element:0x2b008e9cdf4c name="script" attributes=[#<Nokogiri::XML::Attr:0x2b008e9cde5c name="type" value="text/javascript">, #<Nokogiri::XML::Attr:0x2b008e9cde34 name="src" value="//script.crazyegg.com/pages/scripts/0091/9533.js">, #<Nokogiri::XML::Attr:0x2b008e9cde0c name="async" value="async">]>, #<Nokogiri::XML::Text:0x2b008ec39f60 "\n">]>, #<Nokogiri::XML::Text:0x2b008ec39dbc "\n">, #<Nokogiri::XML::Element:0x2b008ec39d08 name="body" children=[#<Nokogiri::XML::Text:0x2b008ec39b50 "\n">, #<Nokogiri::XML::Element:0x2b008ec39a9c name="a" attributes=[#<Nokogiri::XML::Attr:0x2b008ec39a38 name="accesskey" value="s">, #<Nokogiri::XML::Attr:0x2b008ec39a24 name="href" value="#cpw_main">, #<Nokogiri::XML::Attr:0x2b008ec39a10 name="id" value="sfSkip">, #<Nokogiri::XML::Attr:0x2b008ec399fc name="tabindex" value="1">, #<Nokogiri::XML::Attr:0x2b008ec399e8 name="class" value="hidden-print">] children=[#<Nokogiri::XML::Text:0x2b008ec38db8 "\n    Skip to Content\n">]>, #<Nokogiri::XML::Text:0x2b008ec38c14 "\n">, #<Nokogiri::XML::Element:0x2b008ec38b60 name="div" attributes=[#<Nokogiri::XML::Attr:0x2b008ec38afc name="id" value="page-wrapper">] children=[#<Nokogiri::XML::Text:0x2b008ec386ec "\n    ">, #<Nokogiri::XML::Element:0x2b008ec38638 name="section" attributes=[#<Nokogiri::XML::Attr:0x2b008ec385d4 name="id" value="print-header">, #<Nokogiri::XML::Attr:0x2b008ec385c0 name="class" value="visible-print">] children=[#<Nokogiri::XML::Text:0x2b008e9b1e3c "\n        ">, #<Nokogiri::XML::Element:0x2b008e9b1d88 name="h1" children=[#<Nokogiri::XML::Text:0x2b008e9b14f0 "\n            ">, #<Nokogiri::XML::Element:0x2b008e9b13c4 name="img" attributes=[#<Nokogiri::XML::Attr:0x2b008e9b1360 name="src" value="/assets/trec/img/icon/trec-bw-logo.png">, #<Nokogiri::XML::Attr:0x2b008e9b134c name="alt" value="trec-logo">]>, #<Nokogiri::XML::Element:0x2b008ec3fe38 name="div" attributes=[#<Nokogiri::XML::Attr:0x2b008ec3fdd4 name="class" value="print-page-title">] children=[#<Nokogiri::XML::Text:0x2b008ec3f9c4 "Texas Real Estate Commission">]>, #<Nokogiri::XML::Text:0x2b008ec3f820 "        ">]>, #<Nokogiri::XML::Text:0x2b008ec3f67c "\n    ">]>, #<Nokogiri::XML::Text:0x2b008ec3f4d8 "\n    ">, #
+```
+
+
+This is not the complete output but don't get your head wraped around this either, because you will need to know how to use the inspector in your browser(preferably chrome or edge). You will hit F12 you your keyboard or right click on the webpage and click inspect. There is a icon that looks like a box with an arrow over it on the top left corner of your dashboard. You click that icon let you click anything in the webpage and show you thier elements. It will show you exactly where it is in the html document.
+
+Lets say I want to look for the elements that has the name. When I look at the html and I am looking for the elements that have the names I will assign it to a variable call realtor_name. To show them seperatley you will have to iterate through the data
+
+```
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
+
+
+class Scraper
+   
+	 #this is where the open-uri gem kicks in
+	 
+	 html = open("https://www.trec.texas.gov/apps/license-holder-search/?lic_name=&industry=Real+Estate&email=&city=san+Antonio&county=&zip=&display_status=&lic_hp=&ws=786&license_search=Search")
+	 
+	 doc = Nokogiri::HTML(html)
+	 
+	
+	 realtor_name =  doc.css('h5.panel-title a').text
+	 
+	 
+	 #This will end up returning a lot of names that have the same line up of elements.
+	 #As I mention before I will not disclose the names due to privacy 
+	 # created an array that will hold realtors
+	 
+	 realtor = Array.new
+	 
+	 realtor << {:realtor => realtor_name}
+	 
+	 
+	 
+end
+```
+
+The .text attribute translate the code from xml to something readable
+
+
+I can continue to scrape through to get their license numbers, email addresses, etc but I will leave that for anyone that wants to try this out.
+
+
+
+
+
+
+
+
+
