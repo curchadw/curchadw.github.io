@@ -38,7 +38,7 @@ Breakdown of the code above:
 This can be done with any id as long as it exist or else you will recieve a http code of 404 as the route does not exist.
 
 
-***Assocations Straight Ruby Vs From Rails ActiveRecords Library*
+***Assocations Straight Ruby Vs From Rails ActiveRecords Library***
 
 
 So I was forgetting what type of project I was doing when I was writng a code to gather players only associated with the current user. A case and point is when you are on a social media web app, you'll see other people's post, but you might want to just look at your own. You are dealing with a "has many" type of association in this example. The user has many post associated with it. In my project, your users will have many players associated with them. In my app, I made a part of it where the current user has the ability to create a player, and also has the ability to just view their own players.
