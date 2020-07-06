@@ -9,7 +9,7 @@ permalink:  my_team_management_system_sinatra_project
 To introduce what this blog is about is an overview of my project and key features that relates to what I've learned in the Sinatra Module. I based the idea of my project on the scenrio of managing a roster to a sports team and scouting other teams in whatever league it is. This project emphasized my overall understanding of how a MVC(Model, View, Controller) app works regardless of the framework in particular being even though they vary by convention and language. Another thing that this project got me used to is looking into the robust documentation of Ruby on Rails. There is still tons to learn but this project gave me a good headstart. There are a couple of features that I wanted to focus on, Dynamic Routes, and ActiveRecords Associations.
 
 
-***Dynamic Routes***
+**Dynamic Routes**
 
 A dynamic route is a http request that has the ability to conform to the attributes within a URL. Lets say for instance you are logged into your account and you want to access player with an ID of one and view their info. It doesn't matter if the player is part of their team or not for this example, so I thought I throw that technicallity out for this one. 
 In my browser I will make a request like "www.tms.com/players/1". What is going on behind the scene with this? Looking at this from a higher level, I am typing in the URL address and making a http request to see player with an id of 1 to the webserver, and the webserver will reply  with a http code un the 200's and also a html document of the content back to your browser. The image below is an illustration on what is going on in a nutshell.
@@ -38,7 +38,7 @@ Breakdown of the code above:
 The dynamic part comes in play when you are able make the  requst with any id in the id attribute of the route that exist, without the application breaking.
 
 
-***Assocations Straight Ruby Vs From Rails ActiveRecords Library***
+**Assocations Straight Ruby Vs From Rails ActiveRecords Library**
 
 
 I was forgetting what type of project I was doing when I was writng a code to gather players only associated with the current user. A case and point is when you are on a social media web app, you'll see other people's post, but you might want to just look at your own. You are dealing with a "has many" type of association in this example. The user has many post associated with it. In my project, your users will have many players associated with them. In my app, I made a part of it where the current user has the ability to create a player, and also has the ability to just view their own players.
