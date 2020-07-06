@@ -65,7 +65,7 @@ class User <ActiveRecord::Base
 end
 ```
 
-When you establish the "has_many" relationship like in the code above, you have access 17 different ActiveRecord methods. When refactoring I used  ```@players = @user.players``` which bascially returns a collection of players pertaining to that user and renders a view with the players like below.
+When you establish the "has_many" relationship like in the code above, you have access 17 different ActiveRecord methods. When refactoring I used  ```@players = @user.players``` which bascially returns a collection of players pertaining to that user and renders a view with the players like below.
 
 ```
 get '/user_players/:username' do
