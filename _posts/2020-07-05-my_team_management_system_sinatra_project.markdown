@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "My Team Management System Sinatra Project"
-date:       2020-07-06 02:27:38 +0000
+date:       2020-07-05 22:27:39 -0400
 permalink:  my_team_management_system_sinatra_project
 ---
 
