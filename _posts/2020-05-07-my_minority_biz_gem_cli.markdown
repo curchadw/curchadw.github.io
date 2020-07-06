@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "My Minority Biz Gem CLI"
-date:       2020-05-08 02:55:44 +0000
+date:       2020-05-07 22:55:45 -0400
 permalink:  my_minority_biz_gem_cli
 ---
 
@@ -61,7 +61,7 @@ class Business
 ```
 
 
-I had issues piecing some of this together only because I was not cofortable with it, but with more practice it will come second nature. This project helped me get more familiar with using version control with github, and how to integrate existing gems or other project to your repos. y repos will only get bigger from here.
+I had issues piecing some of this together only because I was not comfortable with it, but with more practice it will come second nature. This project helped me get more familiar with using version control with github, and how to integrate existing gems or other project to your repos. y repos will only get bigger from here.
 
 
 
