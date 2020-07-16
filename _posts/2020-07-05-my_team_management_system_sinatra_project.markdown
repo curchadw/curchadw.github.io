@@ -16,7 +16,7 @@ In my browser I will make a request like "www.tms.com/players/1". What is going 
 
 ![](https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/images/HTTP.png)
 
-How does this process look under the hood? One thing to remember is the request in the browser calls a special method called a GET request within your controller of your MVC structure, which goes to the server to grab the content, in this case is the erb file at path "players/show
+How does this process look under the hood? One thing to remember is the request in the browser calls a special method called a GET request within your controller of your MVC structure, which goes to the server to grab the content, in this case is the erb file at path "players/show".
 
 ```
 get '/players/:id' do
