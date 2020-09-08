@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Scope Methods"
-date:       2020-09-08 22:18:24 +0000
+date:       2020-09-08 18:18:25 -0400
 permalink:  scope_methods
 ---
 
@@ -88,6 +88,10 @@ Domestics Flights:
 </ul>
 
 `
+
+
+
+
 
 From here you will run you rails sever and see the result.
 
