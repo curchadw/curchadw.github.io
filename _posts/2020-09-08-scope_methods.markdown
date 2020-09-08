@@ -31,9 +31,11 @@ So breaking this down.....
 How would you define this in your Puppy model using ActiveRecord?
 
 
-`class Puppy < ApplicationRecord
+```
+class Puppy < ApplicationRecord
   scope :with_pitbull, -> { where("breed  = pitbull") }
-end`
+end
+```
 
 
 When you do this you will get something called a ActiveRecord::Relation Object.
@@ -50,44 +52,50 @@ Well I wanted to seperate my international flights from my domestics flights bas
 
 In my Flight model it goes as follows
 
-`class Flight < Actvie Record::Base
+```
+class Flight < Actvie Record::Base
        #To sum this up I ordered by flight_number in ascending order then grabbed my results based on the length of the nunber
 			 
        scope :order_by_flight_international, -> { order(flight_number: :asc).where("LENGTH(flight_number) > 3") }
        scope :order_by_flight_domestic, -> { order(flight_number: :asc).where("LENGTH(flight_number) <= 2 ") }
 
 end
-`
+```
 
 In my controller I defined the following for my index action....
 
 
-`
+```
 def index
         @flights = Flight.order_by_flight_international
         @dom_flights = Flight.order_by_flight_domestic
  end
-`
+```
 
 
 This is just a very short version of my view code.
-`
+
 International Flights:
+```
+
 <ul>
 <% @flghts.each do |flight| %>
-     <li><% flight.flight_number %>
+     <li><% flight.flight_number %></li>
 <% end %>
 </ul>
 
+```
 
+-------------------------------------------------------------------------------------------------------------
+
+```
 Domestics Flights:
 <ul>
 <% @dom_flights.each do |flight| %>
-     <li><% flight.flight_number %>
+     <li><% flight.flight_number %></li>
 <% end %>
 </ul>
-
-`
+```
 
 
 
