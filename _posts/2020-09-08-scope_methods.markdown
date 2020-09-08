@@ -15,7 +15,7 @@ This lesson goes back to the basics of SQL.
 Let's say you are trying to query where you are looking for the results in a table named puppies are breed pitbull.
 
 Generally you would do something along these lines in SQL
-`SELECT  * FROM puppies WHERE (breed = 'pitbull')`
+```SELECT  * FROM puppies WHERE (breed = 'pitbull')```
 
 In plain Ruby with key value pairs, it would look like this 
 
