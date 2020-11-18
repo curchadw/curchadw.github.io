@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Real Estate Listing App"
-date:       2020-11-18 04:06:34 +0000
+date:       2020-11-17 23:06:35 -0500
 permalink:  real_estate_listing_app
 ---
 
@@ -62,6 +62,7 @@ When the form is submitted.....I am running a function that is asynchronusly req
 My config object contains the payload on what I what to send to the back to get created.....In food ordering terms....you are placing an order and you are telling them what you want from McD's. In this case, My OWNER_URL is my menu.
 
 
+
 ```
 const config ={
     method: 'post', 
@@ -80,7 +81,8 @@ const config ={
     console.log(resp)<---------at this point, you either get your food or not.(resolved or rejected)
   })
  }
- ```
+ 
+```
  
  In terms of my project, I entered info in a owner form to be created, then it lets me know if it was successful
  
@@ -89,10 +91,11 @@ const config ={
 	
 	
 	```
-	function dropdownMenu(){
+
+	const dropdownMenu = () =>{
 
   const dropdown = document.getElementById('owner_id');
-  dropdown.innerHTML= `` //disappear
+  dropdown.innerHTML= ' '
   fetch(OWNERS_URL)
   .then(resp => resp.json())
   .then(owners => {
@@ -102,9 +105,8 @@ const config ={
     
   })
 }
-	
-	
-	```
+```
+
 
 
 
