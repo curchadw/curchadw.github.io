@@ -90,7 +90,8 @@ const config ={
   That new owner is then added to a dropdown I created in another form I am making my listing. The only way that can happen is if I performed a GET request in a spearate function to retrieve everything in my owner db. After I perform my request, my promises come back and then I am given a response in the form of a added html element in my dropdown menu.
 	
 	
-	```
+```
+	
 
 	const dropdownMenu = () =>{
 
@@ -105,6 +106,7 @@ const config ={
     
   })
 }
+
 ```
 
 
