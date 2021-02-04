@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "What is Thunk"
-date:       2021-01-28 23:22:58 +0000
+date:       2021-01-28 18:22:59 -0500
 permalink:  what_is_thunk
 ---
 
@@ -43,6 +43,9 @@ import manageRecipes from './reducers/manageRecipes';
 
 Then you need to create your redux store on you index javascript file. Once you create it your reducer, and you middleware function are you arguments. Whatever middleware you are using is going to used in your applyMiddleware() method.
 
+
+
+
 ```
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -60,7 +63,18 @@ ReactDOM.render(
 
 ```
 
-I'm am going to use my POST request when a recipe is entered. Just assuming I have my reducers setup, I will the dispatching my 'Add_Recipe' reducer.
+
+There is a great deal of significance of the code above. Thunk middleware verifies if an action is a function and excutes it.  Firstly an 'action' is an object that carries a type and a optional payload or in other words soem kind of event that is triggered by user interaction. Here is an example
+```
+{
+  type: ADD_RECIPE,
+  payload: recipe
+}
+```
+Actions are returned  by functions called action creators that are housed within a directory called actions. Action creators are associated to a component of the developers choosing based on what they are doing and can call them through the props. 
+
+
+I'm am going to use my POST request when a recipe is entered. Just assuming I have my reducers setup, I will be dispatching my 'ADD_RECIPE' reducer.
 
 ```
 export const postRecipes = (recipe) => {
@@ -80,7 +94,7 @@ export const postRecipes = (recipe) => {
       
       fetch(RECIPES_URL,config)
         .then(response =>{ return response.json()})
-        .then(recipe => { dispatch({ type: 'Add_Recipe', payload: recipe })
+        .then(recipe => { dispatch({ type: 'ADD_RECIPE', payload: recipe })
         
     })
     .catch((error) => console.log.error(error))
@@ -94,7 +108,38 @@ export const postRecipes = (recipe) => {
 
 ```
 
-This Async call goes off after the action is iniaiated by the user, and once reponse is settled, it'll update the state accordingly.
+Then once the snippet above is executed, the info being fected from the api will render in the recipe prop below:
+```
+import React, {Component} from 'react';
+import Recipe from './Recipe.js'
+import '../index.css'
+
+class RecipeList extends Component {
+
+
+
+render() {
+  
+   const { recipes } = this.props
+   let flex ='flexitems'
+   return (
+    
+      
+    <div>
+      <div className={flex}>
+          {recipes.map(recipe => <Recipe recipe={recipe} deleteRecipe={this.props.deleteRecipe} key={recipe.id} /> )}
+      </div>
+    </div>
+   )
+    
+  }
+}
+
+
+```
+
+
+This Async call goes off after the action is iniaiated by the user, and once reponse is settled, it'll update the state accordingly. 
 
 
 
