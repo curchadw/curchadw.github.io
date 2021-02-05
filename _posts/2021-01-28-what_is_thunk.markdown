@@ -13,7 +13,7 @@ Here is a flow chart as I start to describe the data flow in parts.
 ![](https://i.stack.imgur.com/HiNWO.jpg)
 
 
-Step 1: An action is dispatched (Its payload) when the user initiates some type of action on the page
+Step 1: An action is dispatched when the user initiates some type of action on the page
 
 
 Step 2: The reducer is called in its current state with the dispatched action of the previous step
