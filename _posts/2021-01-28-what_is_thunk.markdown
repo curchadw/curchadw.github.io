@@ -64,7 +64,7 @@ ReactDOM.render(
 ```
 
 
-There is a great deal of significance of the code above. Thunk middleware verifies if an action is a function and excutes it.  Firstly an 'action' is an object that carries a type and a optional payload or in other words some kind of event that is triggered by user interaction. Here is an example
+There is a great deal of significance of the code above. Thunk middleware verifies if an action is a function and excutes it, and also lets you utilize the dispatch method.  Firstly an 'action' is an object that carries a type and a optional payload or in other words some kind of event that is triggered by user interaction. Here is an example
 ```
 {
   type: ADD_RECIPE,
